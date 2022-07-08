@@ -10,14 +10,15 @@ app.appendChild(logo);
 app.appendChild(container);
 
 var request = new XMLHttpRequest();
-request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+request.open('GET', 'https://dog.ceo/api/breed/spaniel/cocker/images', true);
 request.onload = function () {
 
   // Begin accessing JSON data here
   var data = JSON.parse(this.response);
-  
+
   if (request.status >= 200 && request.status < 400) {
-    data.forEach(movie => {
+    images.forEach(image => {
+        
       const card = document.createElement('div');
       card.setAttribute('class', 'card');
 
@@ -25,7 +26,7 @@ request.onload = function () {
       h1.textContent = movie.title;
 
       const img = document.createElement('img')
-      img .src = movie.image
+      img.src = movie.image
 
       const p = document.createElement('p');
       movie.description = movie.description.substring(0, 300);
